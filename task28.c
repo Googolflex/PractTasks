@@ -1,0 +1,40 @@
+#include <stdio.h>
+#define MAX 300
+
+int main() 
+{
+	int A[MAX];
+	int len = 0;
+	int temp;
+	int s = 0;
+
+	for(int i = 0; i < MAX; i++)
+	{
+		scanf_s("%d", &temp);
+		if(temp == -1)
+		{
+			break;
+		}
+		A[i] = (int)temp;
+		len++;
+	}
+
+	int v = A[0] + 1;
+
+	do 
+	{
+		s = 0;
+		v--;
+		for(int i = 0; i < len; i++)
+		{
+			if(A[i]%v != 0)
+			{
+				s = 1;
+				break;
+			}
+		}
+	} while (s == 1 && v > 1);
+
+	printf("Res: %d", v);
+	return 0;
+}

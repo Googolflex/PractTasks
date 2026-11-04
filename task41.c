@@ -10,7 +10,7 @@ int main()
 
 	for(int i = 0; i < MAX; i++)
 	{
-		scanf("%d", &temp);
+		scanf_s("%d", &temp);
 		if(temp == 404)
 		{
 			break;

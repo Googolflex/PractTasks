@@ -8,9 +8,9 @@ int* createArray(int stopNum)
 	static int arr[MAX];
 	int temp;
 
-	printf("Enter an array(to stop enter %d): \n", stopNum)!
+	printf("Enter an array(to stop enter %d): \n", stopNum);
 
-	while(scanf_s("%d", &temp) == 1 && temp != stopNum)
+	while(scanf("%d", &temp) == 1 && temp != stopNum)
 	{
 		arr[len++] = temp;
 	}
@@ -25,11 +25,11 @@ void printArray(int* arr)
 	{
 		if (i != len - 1)
 		{
-			printf("%d, ", A[i]);
+			printf("%d, ", arr[i]);
 		}
 		else
 		{
-			printf("%d. \n", A[i]);
+			printf("%d. \n", arr[i]);
 		}
 	}
 }
@@ -60,7 +60,7 @@ int task14(int num)
 {
 	int s = 0, k;
 
-	for (int n = a; n != 0; n = n / 10)
+	for (int n = num; n != 0; n = n / 10)
 	{
 		k = n % 10;
 		if (k > s)
@@ -142,7 +142,7 @@ int task52(int* arr)
 	return k;
 }
 
-int task37(int* res)
+int task37(int* arr)
 {
 	int m, s = 0;
 	for (int i = 0; i < len; i++)
@@ -171,7 +171,7 @@ int* task22()
 	int i = 0, v;
 
 	printf("Enter max num: \n");
-	scanf_s("%d", &v);
+	scanf("%d", &v);
 
 	for (int a = 2; a < v; a++)
 	{
@@ -190,6 +190,7 @@ int* task22()
 		}
 	}
 	arr[i] = 0;
+	len = i;
 
 	return arr;
 }
@@ -233,7 +234,7 @@ int* task16(int num)
 
 	for (i = 0; n != 0; i++, n = n / 10) {}
 
-	int arr[i];
+	static int arr[MAX];
 	len = i;
 
 	for (arr[i--] = -1, n = num; n != 0; n = n / 10)
@@ -267,7 +268,7 @@ int task50(int* arr)
 	return s;
 }
 
-void task31(int* arr)
+int task31(int* arr)
 {
 	for (int i = 0; i < len - 1; i++)
 	{
@@ -312,6 +313,7 @@ int* task26(int* arr)
 
 int task39(int* arr)
 {
+	int s = 0;
 	for (int i = 0; i < len; i++)
 	{
 		if (arr[i] < 0)
@@ -328,87 +330,147 @@ int task39(int* arr)
 	return s;
 }
 
+int task54(int* arr)
+{
+	int k = -1;
+	for(int i = 0; i < len; i++)
+	{
+		if(arr[i] < 0)
+		{
+			continue;
+		}
+		if(k == -1 || arr[i] < arr[k])
+		{
+			k = i;
+		}
+	}
+
+	if(k == -1)
+	{
+		return -1;
+	}
+
+	return arr[k];
+}
+
 int main(void)
 {
 	int progNum;
 	printf("Choose program: \n1. task28 \n2. task14 \n3. task41 \n4. task33 \n5. task19 \n6. task52 \n7. task37 \n8. task22 \n9. task45 \n10. task16 \n11. task50 \n12. task31 \n13. task26 \n14. task39 \n15. task54 \n");
-	scanf_s("%d", &progNum);
+	scanf("%d", &progNum);
 
 	switch(progNum)
 	{
-		case 1: 
+		case 1:
+		{
 			int* arr = createArray(-1);
 			int res = task28(arr);
 			printf("Res: %d \n", res);
 			break;
+		}
 		case 2:
+		{
 			int num;
 			printf("Enter num: \n");
-			scanf_s("%d", &num);
+			scanf("%d", &num);
 			int res = task14(num);
 			printf("Res: %d \n", res);
 			break;
+		}
 		case 3:
+		{
 			int* arr = createArray(404);
 			int res = task41(arr);
 			printf("Res: %d \n", res);
 			break;
+		}
 		case 4:
+		{
 			int* arr = createArray(-1);
 			task33(arr);
 			break;
+		}
 		case 5:
+		{
 			int* arr = createArray(-1);
 			arr = task19(arr);
 			printArray(arr);
 			break;
+		}
 		case 6:
+		{
 			int* arr = createArray(-1);
 			int res = task52(arr);
 			printf("Max index: %d \n", res);
 			break;
+		}
 		case 7:
+		{
 			int* arr = createArray(-1);
 			int res = task37(arr);
 			printf("Res: %d \n", res);
 			break;
+		}
 		case 8:
+		{
 			int* arr = task22();
 			printArray(arr);
 			break;
+		}
 		case 9:
+		{
 			int* arr = task45();
 			printArray(arr);
 			break;
+		}
 		case 10:
+		{
+			int num;
 			printf("Enter num: \n");
-			scanf_s("%d", &num);
+			scanf("%d", &num);
 			int* arr = task16(num);
 			printArray(arr);
-			break();
+			break;
+		}
 		case 11:
+		{
 			int* arr = createArray(-1);
 			int res = task50(arr);
 			printf("Res: %d \n", res);
 			break;
+		}
 		case 12:
+		{
 			int* arr = createArray(-1);
-			int ras = task31(arr);
+			int res = task31(arr);
 			printf("Res: %d \n", res);
 			break;
+		}
 		case 13:
+		{
 			int* arr = createArray(-1);
 			arr = task26(arr);
 			printArray(arr);
 			break;
+		}
 		case 14:
+		{
 			int* arr = createArray(-1);
-			int res = task39();
-			printf("Res: %d\n", res);
+			int res = task39(arr);
+			printf("Res: %d \n", res);
 			break;
+		}
 		case 15:
-			task54();
+		{
+			int* arr = createArray(-1);
+			int res = task54(arr);
+			printf("Res: %d \n", res);
 			break;
+		}
+		default:
+		{
+			printf("Invalid input \n");
+		}
 	}
 
 	return 0;

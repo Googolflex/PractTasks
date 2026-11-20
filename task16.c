@@ -5,7 +5,7 @@ int main()
 	int num, len;
 
 	printf("Enter num: \n");
-	scanf_s("%d", &num);
+	scanf("%d", &num);
 
 	int n = num;
 	int i;

@@ -3,7 +3,7 @@
 
 int main()
 {
-	int k = 0, s = 0, n = 0;
+	int k = 0, s = 0;
 	int len = 0;
 	int temp;
 	int A[MAX];
